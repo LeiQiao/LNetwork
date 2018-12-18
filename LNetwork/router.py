@@ -21,7 +21,7 @@ class Router:
             'username': self.username,
             'psd': self.password
         }
-        response = requests.post(self.login_url, data=form_data, allow_redirects=False)
+        response = requests.post(self.login_url, data=form_data, allow_redirects=False, timeout=10)
         if response.status_code != 302:
             return False
 
@@ -45,7 +45,7 @@ class Router:
         cookie = {
             'sysauth': self.auth
         }
-        response = requests.get(url, cookies=cookie)
+        response = requests.get(url, cookies=cookie, timeout=10)
         if response.status_code != 200:
             self.connected = False
             return None
