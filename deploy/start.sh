@@ -1,4 +1,4 @@
 #!/bin/bash
 
 export LANG=en_GB.UTF-8
-uwsgi --ini ./uwsgi_parasite.ini --wsgi-disable-file-wrapper
+uwsgi --ini ./uwsgi_parasite.ini  --enable-threads --wsgi-disable-file-wrapper
