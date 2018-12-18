@@ -5,7 +5,7 @@
     'description': '基于电信天翼智能网管，定时统计当前局域网的设备流量',
     'author': '',
     'website': '',
-    'source': {'git': 'git@github.com:LeiQiao/LNetwork.git', 'branch': 'master'},
+    'source': {'git': 'https://github.com/LeiQiao/LNetwork.git', 'branch': 'master'},
 
     'category': '',
     'version': '0.1',
@@ -23,5 +23,5 @@
     },
 
     # any plugin necessary for this one to work correctly
-    'depends': ['base', 'base_schedule', 'base_api_wrapper']
+    'depends': ['base', 'base_db_manager', 'base_schedule', 'base_api_wrapper']
 }

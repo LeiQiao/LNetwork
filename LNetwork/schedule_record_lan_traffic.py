@@ -1,19 +1,22 @@
 from plugins.base_schedule.schedule import Schedule
-from .lnetwork_plugin import LNetworkPlugin
 from .models import FlowModel
 from pa import database as db
 import pa
 from .router import Router
+from .lnetwork_config import LNetworkConfig
 
 
 class ScheduleRecordLANTraffic(Schedule):
     def __init__(self):
         super(ScheduleRecordLANTraffic, self).__init__()
-        self.router = Router(pa.plugin_config[LNetworkPlugin.__pluginname__]['router_address'])
+
+        config = LNetworkConfig()
+        self.router = Router(config.router_address)
 
     def first_run(self):
-        self.router.login(pa.plugin_config[LNetworkPlugin.__pluginname__]['username'],
-                          pa.plugin_config[LNetworkPlugin.__pluginname__]['password'])
+        config = LNetworkConfig()
+        self.router.login(config.username,
+                          config.password)
 
     def run(self):
         devs = self.router.get_device_traffic()
